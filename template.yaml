@@ -23,6 +23,14 @@ Resources:
               detail-type:
                 - EC2 Instance State-change Notification
 
+  UpdateHolidayDbFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: holiday_function
+      Handler: holiday/db_update.lambda_handler
+      Runtime: python3.8
+      Timeout: 90
+
   HolidayDBTable:
     Type: AWS::DynamoDB::Table
     Properties: 
