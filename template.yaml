@@ -47,7 +47,7 @@ Resources:
             Path: /check_holiday
             Method: get
             RequestParameters:
-              - method.request.querystring
+              - method.request.querystring.date
 
 Outputs:
   UpdateHolidayDbFunction:
