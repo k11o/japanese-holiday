@@ -30,6 +30,14 @@ Resources:
       Handler: holiday/db_update.lambda_handler
       Runtime: python3.8
       Timeout: 90
+      Events:
+        CWSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(0 20 1 * ? *)'
+            Name: UpdateHolidayDbSchedule
+            Description: Schedule for Update HolidayDB
+            Enabled: True
 
   HolidayDBTable:
     Type: AWS::DynamoDB::Table
