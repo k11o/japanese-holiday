@@ -40,20 +40,15 @@ Resources:
             Enabled: True
 
   HolidayDBTable:
-    Type: AWS::DynamoDB::Table
+    Type: AWS::Serverless::SimpleTable
     Properties: 
-      AttributeDefinitions: 
-        - 
-          AttributeName: Date
-          AttributeType: S
-      KeySchema: 
-        - 
-          AttributeName: Date
-          KeyType: HASH
+      TableName: "HolidayDB"
+      PrimaryKey: 
+        Name: Date
+        Type: String
       ProvisionedThroughput: 
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
-      TableName: "HolidayDB"
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
