@@ -1,11 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: >
+Description:
   japanese-holiday
-
-  Sample SAM Template for japanese-holiday
-
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
     Timeout: 3
@@ -14,8 +10,8 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: hello_world_function
-      Handler: hello_world/app.lambda_handler
+      CodeUri: holiday_function
+      Handler: holiday/app.lambda_handler
       Runtime: python3.8
       Events:
         HelloWorld:
@@ -26,6 +22,22 @@ Resources:
                 - aws.ec2
               detail-type:
                 - EC2 Instance State-change Notification
+
+  HolidayDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - 
+          AttributeName: Date
+          AttributeType: S
+      KeySchema: 
+        - 
+          AttributeName: Date
+          KeyType: HASH
+      ProvisionedThroughput: 
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: "HolidayDB"
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
