@@ -20,7 +20,7 @@ Resources:
         CWSchedule:
           Type: Schedule
           Properties:
-            Schedule: 'cron(0 20 1 * ? *)'
+            Schedule: 'cron(0 20 * * ? *)'
             Name: UpdateHolidayDbSchedule
             Description: Schedule for Update HolidayDB
             Enabled: True
