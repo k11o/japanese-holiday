@@ -57,3 +57,18 @@ Outputs:
   UpdateHolidayDbFunction:
     Description: "Update Holiday DB Lambda Function ARN"
     Value: !GetAtt UpdateHolidayDbFunction.Arn
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: japanese-holiday
+    Description: Check the date is japanese holiday or not
+    Author: Tatsuhiko Kono
+    SpdxLicenseId: Apache-2.0
+    LicenseUrl: LICENSE.txt
+    ReadmeUrl: README.md
+    Labels: ['microservice']
+    HomePageUrl: https://github.com/k11o/japanese-holiday
+    SemanticVersion: 0.0.1
+    SourceCodeUrl: https://github.com/k11o/japanese-holiday
+
+
